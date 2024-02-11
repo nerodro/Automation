@@ -5,17 +5,32 @@ import org.testng.annotations.Test;
 
 public class BankPageTest extends BaseTest {
     @Test
-    public void Login(){
+    public void TestDeposite(){
         LoginPage loginPage = new LoginPage();
         BankPage bankPage = new BankPage();
+        int fibInt = bankPage.getIntFib();
         loginPage
                 .ClickOnCustomerLogin()
                 .ClickOnDropdown()
                 .SelectUserInDropDown()
                 .LoginClick();
         bankPage
-                .fillDeposit()
-                .fillWithdrawl()
-                .assertBalance("0");
+                .fillDeposit(fibInt)
+                .assertBalance(fibInt);
+    }
+    @Test
+    public void TestWithdraw(){
+        LoginPage loginPage = new LoginPage();
+        BankPage bankPage = new BankPage();
+        int fibInt = bankPage.getIntFib();
+        loginPage
+                .ClickOnCustomerLogin()
+                .ClickOnDropdown()
+                .SelectUserInDropDown()
+                .LoginClick();
+        bankPage
+                .fillDeposit(fibInt)
+                .fillWithdrawl(fibInt)
+                .assertBalance(0);
     }
 }

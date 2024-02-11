@@ -4,8 +4,9 @@ import baseTest.BankPage.BankPage;
 import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import com.codeborne.selenide.Configuration;
-import org.junit.After;
-import org.junit.Before;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 abstract public class BaseTest {
     public void Settings(){
@@ -14,14 +15,12 @@ abstract public class BaseTest {
         Configuration.browserSize = "1920x1080";
         Configuration.headless = false;
     }
-    @Before
+    @BeforeTest
     public void init(){
         Settings();
-        BankPage bankPage = new BankPage();
     }
-    @After
+    @AfterMethod
     public void Close(){
         Selenide.closeWebDriver();
     }
-
 }

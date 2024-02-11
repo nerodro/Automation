@@ -1,5 +1,6 @@
 package baseTest.BankPage;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -18,19 +19,15 @@ public class BankPage {
     private SelenideElement InputField = $(By.xpath("//input"));
     private SelenideElement MakeActionButton = $(By.xpath("//button[@class=\"btn btn-default\"]"));
     private SelenideElement BalanceField = $(By.xpath("//strong[@class=\"ng-binding\"][2]"));
-    public BankPage fillDeposit(){
-        int fibInt = getIntFib();
+    public BankPage fillDeposit(int fibInt){
         DepositButton.click();
         Article.should(text("Amount to be Deposited :"));
         InputField.click();
         InputField.sendKeys(Integer.toString(fibInt));
         MakeActionButton.click();
-        String balance = BalanceField.getText();
-        Assert.assertEquals(Integer.toString(fibInt), balance);
         return this;
     }
-    public BankPage fillWithdrawl(){
-        int fibInt = getIntFib();
+    public BankPage fillWithdrawl(int fibInt){
         WithdrawlButton.click();
         Article.should(text("Amount to be Withdrawn :"));
         InputField.click();
@@ -38,12 +35,12 @@ public class BankPage {
         MakeActionButton.click();
         return this;
     }
-    public  BankPage assertBalance(String balance){
+    public  BankPage assertBalance(int balance){
         String textBalance = BalanceField.getText();
-        Assert.assertEquals(balance, textBalance);
+        Assert.assertEquals(Integer.toString(balance), textBalance);
         return this;
     }
-    private int getIntFib(){
+    public int getIntFib(){
         int a = 1;
         int b = 1;
         LocalDate today = LocalDate.now();
