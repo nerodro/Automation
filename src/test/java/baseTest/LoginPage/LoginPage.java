@@ -1,5 +1,6 @@
 package baseTest.LoginPage;
 
+import baseTest.BankPage.BankPage;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
@@ -27,8 +28,8 @@ public class LoginPage {
         HarryPotterButton.filterBy(text(name)).first().click();
         return this;
     }
-    public LoginPage LoginClick(){
+    public BankPage LoginClick(){
         LoginButton.click();
-        return this;
+        return new BankPage();
     }
 }

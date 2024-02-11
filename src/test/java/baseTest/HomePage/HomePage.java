@@ -8,8 +8,8 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class HomePage {
     private SelenideElement customer_login = $(By.xpath("//button[@ng-click=\"customer()\"]"));
-    public HomePage ClickOnCustomerLogin(){
+    public LoginPage ClickOnCustomerLogin(){
         customer_login.click();
-        return this;
+        return new LoginPage();
     }
 }
