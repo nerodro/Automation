@@ -14,6 +14,7 @@ public class BankPage {
     private SelenideElement DepositButton = $(By.xpath("//button[@ng-click=\"deposit()\"]"));
     private SelenideElement WithdrawlButton = $(By.xpath("//button[@ng-click=\"withdrawl()\"]"));
     private SelenideElement TransactionsButton = $(By.xpath("ng-click=\"transactions()\""));
+    private SelenideElement SuccesfullOpetation = $(By.xpath("//span[@ng-show=\"message\"]"));
     private SelenideElement article = $(By.xpath("//label"));
     private SelenideElement Article = $(By.xpath("//label"));
     private SelenideElement InputField = $(By.xpath("//input"));
@@ -38,6 +39,14 @@ public class BankPage {
     public  BankPage assertBalance(int balance){
         String textBalance = BalanceField.getText();
         Assert.assertEquals(Integer.toString(balance), textBalance);
+        return this;
+    }
+    public BankPage assertSuccesDeposite(){
+        SuccesfullOpetation.shouldHave(text("Deposit Successful"));
+        return this;
+    }
+    public BankPage assertSuccesWithDrawl(){
+        SuccesfullOpetation.shouldHave(text("Transaction successful"));
         return this;
     }
     public int getIntFib(){
