@@ -1,18 +1,21 @@
+import baseTest.BankPage.BankPage;
 import baseTest.BaseTest;
+import baseTest.LoginPage.LoginPage;
 import org.testng.annotations.Test;
-
-import static constants.Constant.TimeOut.BankUrl;
 
 public class BankPageTest extends BaseTest {
     @Test
     public void Login(){
-        basePage.open(BankUrl);
-
-        loginAction
+        LoginPage loginPage = new LoginPage();
+        BankPage bankPage = new BankPage();
+        loginPage
                 .ClickOnCustomerLogin()
                 .ClickOnDropdown()
                 .SelectUserInDropDown()
                 .LoginClick();
-        bankPageActions.fillDepositButton();
+        bankPage
+                .fillDeposit()
+                .fillWithdrawl()
+                .assertBalance("0");
     }
 }

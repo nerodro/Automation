@@ -1,27 +1,27 @@
 package baseTest;
 
-import common.CommonActions;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
-import pages.Bank.general.BankPageActions;
-import pages.base.BasePage;
-import pages.login.LoginAction;
+import baseTest.BankPage.BankPage;
+import com.codeborne.selenide.Selenide;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import com.codeborne.selenide.Configuration;
+import org.junit.After;
+import org.junit.Before;
 
-public class BaseTest {
-    protected WebDriver driver = CommonActions.create();
-    protected BasePage basePage = new BasePage(driver);
-    protected BankPageActions bankPageActions = new BankPageActions(driver);
-    protected LoginAction loginAction = new LoginAction(driver);
-    //@AfterTest
-    public void cleanCookies(){
-        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
-        driver.manage().deleteAllCookies();
-        javascriptExecutor.executeAsyncScript("window.sessionStorage.clear()");
+abstract public class BaseTest {
+    public void Settings(){
+        WebDriverManager.chromedriver().setup();
+        Configuration.browser = "chrome";
+        Configuration.browserSize = "1920x1080";
+        Configuration.headless = false;
     }
-    @AfterSuite(alwaysRun = true)
-    public void close(){
-        driver.quit();
+    @Before
+    public void init(){
+        Settings();
+        BankPage bankPage = new BankPage();
     }
+    @After
+    public void Close(){
+        Selenide.closeWebDriver();
+    }
+
 }
