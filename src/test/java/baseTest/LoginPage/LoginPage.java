@@ -16,9 +16,7 @@ public class LoginPage {
     private SelenideElement dropDownUsers = $(By.xpath("//select[@name=\"userSelect\"]"));
     private ElementsCollection HarryPotterButton = $$x("//option[@ng-repeat=\"cust in Customers\"]");
     private SelenideElement LoginButton = $(By.xpath("//button[@ng-show=\"custId != ''\"]"));
-    public LoginPage(){
-        Selenide.open(base_Url);
-    }
+
 
     public LoginPage ClickOnDropdown(){
         dropDownUsers.click();

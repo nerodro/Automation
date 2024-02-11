@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 public class BankPageTest extends BaseTest {
     @Test
     public void TestDeposite(){
-        new LoginPage();
         int fibInt = new BankPage().getIntFib();
 
         new HomePage()
@@ -21,7 +20,6 @@ public class BankPageTest extends BaseTest {
     }
     @Test
     public void TestWithdraw(){
-        new LoginPage();
         int fibInt = new BankPage().getIntFib();
 
         new HomePage()
