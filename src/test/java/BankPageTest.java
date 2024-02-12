@@ -1,7 +1,6 @@
 import baseTest.BankPage.BankPage;
 import baseTest.BaseTest;
 import baseTest.HomePage.HomePage;
-import baseTest.LoginPage.LoginPage;
 import org.testng.annotations.Test;
 
 public class BankPageTest extends BaseTest {

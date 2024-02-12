@@ -1,11 +1,9 @@
 package baseTest;
 
-import baseTest.BankPage.BankPage;
 import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 abstract public class BaseTest {
