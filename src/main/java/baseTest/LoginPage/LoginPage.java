@@ -4,6 +4,7 @@ import baseTest.BankPage.BankPage;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -21,6 +22,14 @@ public class LoginPage {
     }
     public LoginPage SelectUserInDropDown(String name){
         HarryPotterButton.filterBy(text(name)).first().click();
+        return this;
+    }
+    public LoginPage SelectUserInDropDown(){
+        HarryPotterButton.filterBy(text("Harry Potter")).first().click();
+        return this;
+    }
+    public LoginPage assertUserInDropDown(String name){
+        Assert.assertTrue(HarryPotterButton.filterBy(text(name)).first().exists());
         return this;
     }
     public BankPage LoginClick(){

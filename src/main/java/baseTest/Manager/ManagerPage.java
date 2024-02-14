@@ -1,5 +1,6 @@
 package baseTest.Manager;
 
+import baseTest.HomePage.HomePage;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
@@ -22,6 +23,7 @@ public class ManagerPage {
     private ElementsCollection listFirstNames = $$x("//td[@class=\"ng-binding\"][1]");
     private ElementsCollection listLastNames = $$x("//td[@class=\"ng-binding\"][2]");
     private ElementsCollection listPostCodes = $$x("//td[@class=\"ng-binding\"][3]");
+    private SelenideElement homeButton = $(By.xpath("//button[@ng-click=\"home()\"]"));
 
     public ManagerPage addCustomerClick(){
         addCustomerButton.click();
@@ -46,6 +48,10 @@ public class ManagerPage {
     public ManagerPage listCustomersClick(){
         listCustomersButton.click();
         return this;
+    }
+    public HomePage homeButtonClick(){
+        homeButton.click();
+        return new HomePage();
     }
     public ManagerPage assertCustomer(CustomerModel model){
         firstNameColumn.click();
